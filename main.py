@@ -35,7 +35,7 @@ def submit():
         url = request.form['url']
     # checking validity of given URL
     if url.startswith("https://indianexpress.com/article/") and requests.head(url).status_code==200:
-        
+        #calling the function for cleaning , from clean_it module
         url,clean_text_result,words_count,sent_count,count_stop_words,upos_text,most_freq_words=clean_it(url)
         cur.execute("""INSERT INTO News_Content(
         URL,
@@ -47,7 +47,7 @@ def submit():
         Most_frequent_words) VALUES (%s,%s,%s,%s,%s,%s,%s) on conflict do nothing""",(url,clean_text_result,words_count,sent_count,count_stop_words,upos_text,most_freq_words))
         conn.commit()
         return redirect(url_for('result'))
-    
+    #handling the errors while giving invalid url
     else:
         text='Please enter a valid URL from IndianExpress website!'
         return render_template('index.html',text=text)
@@ -55,21 +55,19 @@ def submit():
 # Route for displaying processed text
 @app.route('/result')
 def result():
-    # cur.execute("DELETE from News_Content where Given_text=''")
-    # conn.commit()
+        #showing only the last entered data in the tale, given by user at that time
     cur.execute("SELECT * FROM News_Content ORDER BY id DESC LIMIT 1")
     article = cur.fetchall() 
     cur.execute("SELECT URL FROM News_Content ORDER BY id DESC LIMIT 1")
     url=cur.fetchall()
     return render_template('result.html', article=article,url=url)
-
+#route for displaying relevent plain text of the article without any other unnecessory information
 @app.route('/plain_text')
 def plain_text():
-    # cur.execute("DELETE from News_Content where Given_text=''")
-    # conn.commit()
     cur.execute("SELECT Given_text FROM News_Content ORDER BY id DESC LIMIT 1")
     cleantext = cur.fetchall() 
     return render_template('plain_text.html', news_text=cleantext)
+#route for Admin login page
 @app.route('/login', methods=['POST','GET'])
 def login():
     user=''
@@ -78,26 +76,28 @@ def login():
     if request.method=='POST':
         user=request.form['Username']
         paswd=request.form['Password']
-    if user=='admin@example.com' and paswd=='12345':
+    if user=='admin@example.com' and paswd=='12345': #pre defined user credentials
         return render_template('admin.html')
     else:
         mesg='Wrong ID or Password'
-        return render_template('login.html',mesg=mesg)
+        return render_template('login.html',mesg=mesg) #showing appropriate message for wrong id or password
+#route for admin login portal
 @app.route('/login_page')
 def login_page():
     return render_template('login.html')
-    
+#route for displaying full data history    
 @app.route('/view_history')
 def view_history():
     cur.execute("SELECT * FROM News_Content")
     full_history = cur.fetchall() 
     return render_template('history.html', history=full_history)
+#for admin to have the autherity to clear the table data
 @app.route('/clear_history')
 def clear_history():
     mesg='History is cleared!'
     cur.execute("Delete from News_Content")
     conn.commit()
-    cur.execute('ALTER SEQUENCE News_Content_id_seq RESTART WITH 1')
+    cur.execute('ALTER SEQUENCE News_Content_id_seq RESTART WITH 1') #this will restart the id column with 1
     conn.commit()
     return render_template('history.html',mesg=mesg)
 
