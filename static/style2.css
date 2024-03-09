@@ -1,0 +1,214 @@
+/* style.css */
+
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    background: url('/static/bg2.jpg') no-repeat;
+    background-size: cover;               
+    /* background-position: center; */
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin-top: 100px;
+    margin-left: 450px;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: fit-content;
+    text-align: center;
+    background:transparent;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(126, 120, 120,.2);
+    
+}
+/* Navigation styles */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    
+    
+    
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #2b2525;
+    text-decoration: #2b2525;
+    
+    
+}
+
+
+form {
+    margin-top: 20px;
+    
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4acad3;
+    color: #3e3838;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4fc1bc;
+}
+
+/* Result table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #4a4141;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Login form styles */
+
+.content {
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    margin-left: 170px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 1100px;
+    height: fit-content;
+    text-align: left;
+    background:transparent;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(126, 120, 120,.2);
+    
+}
+.content button{
+    margin-left: 400px;
+    margin-top: 5px;
+}
+.content h1{
+    text-align: center;
+}
+.container h2 {
+    margin-bottom: 20px;
+}
+.container input {
+    width: 100%;
+    margin-bottom: 5px;
+    background: transparent;
+    border: 2px solid rgb(72, 70, 70);
+    border-radius: 40px;
+    font-size: 16px;
+}
+.welcome {
+    text-align: center;
+    margin-top: 50px;
+}
+.container button{
+    width: 100px;
+    
+}
+.input-box {
+    margin-bottom: 15px;
+    text-align: center;
+    margin-right: 12px;
+    background: transparent;
+    font-size: 16px;
+    
+}
+
+.input-box input[type="text"],
+.input-box input[type="password"] {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 2px solid #514f4f;
+    border-radius: 40px;
+}
+
+.btn {
+    background-color: #2feede;
+    color: #3b3636;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.btn:hover {
+    background-color: #4fc1bc;
+}
+.logo {
+    width: 120px; /* Adjust width as needed */
+    height: 100%; /* Maintain aspect ratio */
+    margin-right: 20px; /* Adjust spacing as needed */
+}
+
+
+/* History styles */
+.history {
+    margin-top: 20px;
+}
+
+.history b {
+    font-weight: bold;
+}
+
+.history p {
+    margin: 5px 0;
+}
+/* Footer styles */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #222725;
+    background:transparent;
+    backdrop-filter: blur(25px);
+    padding: 10px 0;
+    text-align: center;
+}
