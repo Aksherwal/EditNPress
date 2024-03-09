@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Connect to PostgreSQL
 conn=psycopg2.connect(
-host="localhost", database="dhp2024", user="postgres", password="aks@sitare")
+host="dpg-cnm94so21fec7395uong-a", database="dhp2024_tq84", user="dhp2024_tq84_user", password="QSkx41pWFZslweIaslsdwtFhk97ftivs")
 cur=conn.cursor()
 
 # Create the table if it doesn't exist (adjust columns as needed)
