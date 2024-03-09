@@ -1,0 +1,27 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='LOGO.gif') }}" alt="Logo" class="logo">
+        <ul>
+            <li><a href="/">&nbsp;&nbsp;<b>Home</b></a></li>
+            <!-- Add other navigation links here -->
+            <li><a href="/login_page">&nbsp;&nbsp;<b>Admin Login</b></a></li>
+        </ul>
+    </nav>
+    
+    {% block content %}{% endblock %}
+    
+    <footer>
+        <p>Contact: aksherwal110@gmail.com | Phone: +91 9557521160</p>
+    </footer>
+</body>
+</html>

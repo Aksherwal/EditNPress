@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Admin Page{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Admin Page</h1> <br>
+    <Form action="/view_history">
+        <button type="submit" class="history">View History</button>
+
+    </Form>
+    <Form action="/clear_history" >
+        <button type="submit" class="clear_history">Clear History</button>
+    {{ mesg }}
+    </Form>
+</div>
+{% endblock %}
+

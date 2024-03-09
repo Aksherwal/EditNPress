@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Text Analysis{% endblock %}
+{% block content %}
+<div class="content">
+    <h1>Analysis Result</h1>
+    <table>
+        <thead>
+            <p>URL: <a href="{{ url[0][0] }}">{{ url[0][0] }} </a></p>
+            <tr>
+                <th>Number of Words</th>
+                <th>Number of Sentences</th>
+                <th>Number of Stop-Words</th>
+                <th>UPOS Tags Details</th>
+                <th>Most Frequent Words</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in article %}
+            <tr>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('plain_text')}}"><button><b>View Plain Text</b></button></a>
+</div>
+{% endblock %}
+
+

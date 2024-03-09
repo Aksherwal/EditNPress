@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %}History{% endblock %}
+{% block content %}
+<div class="content">
+    <h1 style="background-color:lightblue;">History</h1>
+
+    {% for row in history %}
+    <b>Sr. No.{{ row[0] }}</b>
+    <p><b>Given URL: </b><a href="{{ row[1] }}">{{ row[1] }}</a></p>
+    <p><b>Text Obtained: </b></p>{{ row[2] }}<br>
+    <P><b>Number of Words: </b>{{ row[3] }}</P>
+    <P><b>Number of Sentences: </b> {{ row[4] }}</P>
+    <P><b>Number of Stop-Words: </b>{{ row[5] }}</P>
+    <P><b>UPOS tags Details: </b> {{ row[6] }}</P>
+    <P><b>Most Frequent Words: </b>{{ row[7] }}</P><br>
+    <hr>
+    {% endfor %}
+    <Form action="/clear_history">
+        <button type="submit">Clear History</button>
+    {{ mesg }}
+</div>
+{% endblock %}
