@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from collections import Counter
 import urllib
 import nltk
+nltk.download('all')
 import re
 
 def clean_it(url):
