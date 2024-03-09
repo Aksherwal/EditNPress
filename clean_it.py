@@ -8,15 +8,15 @@ nltk.download('udhr2')
 import re
 
 def clean_it(url):
+    #accessing html part of the given url using urllib.requests
     html=urllib.request.urlopen(url).read().decode('utf8')
-
+    #scraping the html
     soup=BeautifulSoup(html,'html.parser')
-
+    #find the content of all h1 tags, which is a heading
     head=soup.find_all('h1')
-
-    # sub_head=soup.find_all('h2')
-
+    #finding the main div tag where all the relevent text is present
     main_div=soup.find("div", id="pcl-full-content")
+    #removing unwanted tags from the content of our main div
     unwanted1=main_div.find_all('blockquote')
     for tag in unwanted1:
         tag.decompose()
@@ -26,9 +26,9 @@ def clean_it(url):
     unwanted3=main_div.find_all('strong')
     for tag in unwanted3:
         tag.decompose()
-    
+    #here the actual plain text is
     main_cont=main_div.find_all('p')
-
+    #combinig heading and paragraphs information after removing all the tags using regular expression
     All_text=head+main_cont
     clean_text_result=''
     for i in All_text:
@@ -37,20 +37,19 @@ def clean_it(url):
         clean_text_result+=' '+cleantext
     
     # Analyze the text
-    
-    words_list=word_tokenize(clean_text_result)
-    sent_list=sent_tokenize(clean_text_result)
-
+    words_list=word_tokenize(clean_text_result) #list of all words in the text
+    sent_list=sent_tokenize(clean_text_result) #list of all sentences in the text
+    #counting stop words
     count_stop_words=0
     for i in words_list:
         if i.lower() in nltk.corpus.stopwords.words('english'):
             count_stop_words+=1
-
+    #removing all the punctuation from the list of words to count the actual number of words
     punc_list=['.',',','!','?']   
     for i in words_list:
         if i in punc_list:
             words_list.remove(i)
-
+    #making dictionary of all pos tags
     dict_upos={}
     list_new=[x for x in nltk.pos_tag(words_list, tagset='universal')]
     for i in list_new:
@@ -62,13 +61,13 @@ def clean_it(url):
     sent_count=len(sent_list)
     words_count=len(words_list)
     upos_text=str(dict_upos)
-    
+    #function for finding most frequent atleast 5 words from a paragraph
     def most_frequent_words(paragraph, n=5): 
         # Get the list of English stopwords
         stop_words = set(nltk.corpus.stopwords.words('english'))
 
         # Convert paragraph to lowercase and remove punctuation
-        paragraph = re.sub(r'[^\w\s]', '', paragraph.lower())
+        paragraph = re.sub(r'[^\w\s]', '', paragraph.lower()) #removing unnecessory symbols, spaces
         list_words = paragraph.split() #list of words
         words = [x for x in list_words if x not in stop_words] # without stopwords
 
