@@ -39,13 +39,13 @@ google = oauth.register(
     access_token_params=None,
     refresh_token_url=None,
     refresh_token_params=None,
-    redirect_uri='https://editnpress.onrender.com/login',
+    redirect_uri='https://editnpress.onrender.com/login_page',
     client_kwargs={'scope': 'openid profile email'},
 )
 
 @app.route('/Glogin')
 def Glogin():
-    redirect_uri = url_for('login', _external=True)
+    redirect_uri = url_for('login_page', _external=True)
     
     return google.authorize_redirect(redirect_uri)
 
