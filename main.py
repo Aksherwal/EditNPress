@@ -44,7 +44,7 @@ google = oauth.register(
 )
 
 @app.route('/Glogin')
-def login():
+def Glogin():
     redirect_uri = url_for('login_page', _external=True)
     
     return google.authorize_redirect(redirect_uri)
