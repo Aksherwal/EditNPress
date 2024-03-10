@@ -39,13 +39,13 @@ google = oauth.register(
     access_token_params=None,
     refresh_token_url=None,
     refresh_token_params=None,
-    redirect_uri='https://editnpress.onrender.com/login_page',
+    redirect_uri='https://editnpress.onrender.com/admin',
     client_kwargs={'scope': 'openid profile email'},
 )
 
 @app.route('/Glogin')
 def Glogin():
-    redirect_uri = url_for('login_page', _external=True)
+    redirect_uri = url_for('admin', _external=True)
     
     return google.authorize_redirect(redirect_uri)
 
@@ -110,6 +110,10 @@ def login():
     else:
         mesg='Wrong ID or Password'
         return render_template('login.html',mesg=mesg) #showing appropriate message for wrong id or password
+
+@app.rout('/admin')
+def admin():
+        return render_template('admin.html')
 #route for admin login portal
 @app.route('/login_page')
 def login_page():
