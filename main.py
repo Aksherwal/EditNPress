@@ -111,7 +111,7 @@ def login():
         mesg='Wrong ID or Password'
         return render_template('login.html',mesg=mesg) #showing appropriate message for wrong id or password
 
-@app.rout('/admin')
+@app.route('/admin')
 def admin():
         return render_template('admin.html')
 #route for admin login portal
