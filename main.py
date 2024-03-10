@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 import psycopg2
 import requests
 from clean_it import clean_it
+
+from authlib.integrations.flask_client import OAuth
 
 app = Flask(__name__)
 
@@ -22,6 +24,33 @@ cur.execute("""CREATE TABLE IF NOT EXISTS News_Content (id serial primary key,
         )
 """)
 conn.commit()
+
+#google Authentication---------------------------------------------------------------------------------------------------------------------------------------------------
+
+app.secret_key = b'1122'
+oauth = OAuth(app)
+google = oauth.register(
+    name='google',
+    client_id='http://1057527378199-co9tqua4oj17e0s2rsbhbabpth2t2s4k.apps.googleusercontent.com',
+    client_secret='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',
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+    authorize_params=None,
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    access_token_params=None,
+    refresh_token_url=None,
+    refresh_token_params=None,
+    redirect_uri='https://editnpress.onrender.com/login',
+    client_kwargs={'scope': 'openid profile email'},
+)
+
+@app.route('/Glogin')
+def login():
+    redirect_uri = url_for('login_page', _external=True)
+    
+    return google.authorize_redirect(redirect_uri)
+
+
+"""---------------------------------------------------------------------------------------------------------------------------------------------------------"""
 
 # Route for home page
 @app.route('/')
