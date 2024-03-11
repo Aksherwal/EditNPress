@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from collections import Counter
 import urllib
 import nltk
-nltk.download('all')
+nltk.download('punkt')
 nltk.download('udhr2')
 import re
 
