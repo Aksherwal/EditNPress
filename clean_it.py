@@ -4,6 +4,7 @@ from collections import Counter
 import urllib
 import nltk
 nltk.download('punkt')
+nltk.download('stopwords')
 nltk.download('udhr2')
 import re
 
