@@ -24,7 +24,7 @@ EditNpress is a web application that allows users to extract and analyze news co
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-username/EditNPress.git
+git clone https://github.com/Aksherwal/EditNPress.git
 ```
 2. Create a virtual environment and activate it:
 ```
