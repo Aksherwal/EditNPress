@@ -3,6 +3,8 @@
 
 EditNpress is a web application that allows users to extract and analyze news content from the Indian Express website. It provides a simple interface for users to input a news article URL, which is then processed, cleaned, and stored in a PostgreSQL database. The application also provides various metrics and visualizations related to the news content.
 
+### Live Demo
+[Click Here](https://editnpress.onrender.com/)
 ## Features
 
 1. **URL Validation**: The application checks the validity of the input URL and ensures that it is from the Indian Express website.
